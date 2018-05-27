@@ -1,7 +1,5 @@
 import time
-import unittest
 from behave import *
-from hamcrest import *
 from DriverUI import driverUI
 
 
@@ -43,22 +41,16 @@ def step2(context):
     driverUI.pushToSubmitButton(context)
 
 
-@when(u'Открыл ссылку фирменного магазина дайсон "{link}"')
+@when(u'Перешел на сайт фирменного магазина дайсон "{link}"')
 def step3(context, link):
-    driverUI.selectLink(context, link)
+    driverUI.selectSite(context, link)
 
 
-@then(u'Убедился что на открывшейся странице есть "{item}"')
+@when(u'В верхнем меню выбрал "{tab}" затем в выпадающем меню перешел на вкладку "{subtab}"')
+def step5(context, tab, subtab):
+    driverUI.selectSubTabOfMainMenu(context, tab, subtab)
+
+
+@then(u'Убедился что на странице есть "{item}"')
 def step4(context, item):
-    hasItem = driverUI.checkExistItem(context, item)
-    # assert hasItem == True
-
-
-@when(u'В верхнем меню выбрал вкладку "{tab}"')
-def step5(context, tab):
-    driverUI.selectTabOfMainMenu(context, tab)
-
-
-
-
-
+    driverUI.checkExistItem(context, item)
