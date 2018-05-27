@@ -20,12 +20,10 @@ def selectSite(context, link):
 
 
 def checkExistItem(context, item):
-    assert context.browser.find_element_by_xpath("//h5[contains(a,'{}')]".format(item))
-    # assert(By.XPATH, "//h5[a='{}']".format(item))
-    # hasItem = (By.XPATH, "//h5[a='{}']".format(item))
-    # wait = WebDriverWait(context.browser, 20)
-    # wait.until(EC.element_to_be_clickable(hasItem))
-    # assert hasItem
+    WebDriverWait(context.browser, 120).until(
+        EC.presence_of_element_located((By.XPATH, '//*[contains(text(), "%s")]' % item))
+    )
+    assert context.browser.find_element_by_xpath(By.XPATH, '//*[contains(text(), "%s")]' % item)
 
 
 #TODO Не работает
