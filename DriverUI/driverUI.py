@@ -21,9 +21,9 @@ def selectSite(context, link):
 
 def checkExistItem(context, item):
     WebDriverWait(context.browser, 120).until(
-        EC.presence_of_element_located((By.XPATH, '//*[contains(text(), "%s")]' % item))
+        EC.presence_of_element_located((By.XPATH, '//*[contains(text(), "{}")]'.format(item)))
     )
-    assert context.browser.find_element_by_xpath(By.XPATH, '//*[contains(text(), "%s")]' % item)
+    assert context.browser.find_element_by_xpath(By.XPATH, '//*[contains(text(), "{}")]'.format(item))
 
 
 #TODO Не работает
